@@ -16,15 +16,15 @@ function preload(){
 
 function setup() {
   
-  createCanvas(displayWidth-10,displayHeight-30);
+  createCanvas(800, 400);
   
   score = 0;
   
   back = createSprite(400,150,400,200);
   back.addImage("B",backimage);
-  back.scale = 3;
+  back.scale = 2;
   back.x = back.width/2;
-  //back.velocityX = -1.5;
+  back.velocityX = -1.5;
   
   
   monkey = createSprite(50,300,10,10);
@@ -51,7 +51,8 @@ function draw() {
   
   monkey.collide(Ground); 
 
-  
+  camera.position.x = monkey.position.x + 350;
+  camera.position.y = displayHeight/4;
   
   if (keyDown("space") && monkey.y >= 275) {
      monkey.velocityY = -14;
@@ -134,8 +135,6 @@ function draw() {
 function Ban(){
   if(frameCount % 95 === 0){
     banana = createSprite(805,200,10,10);
-    camera.position.x = banana.x;
-    camera.position.y = displayHeight/4;
     banana.velocityX = -5;
     banana.addImage(bananaimage);
     banana.scale = 0.04;
